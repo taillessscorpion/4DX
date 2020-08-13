@@ -1,0 +1,1208 @@
+/* BRIEF */
+/* 1200: header exo bold 35px Màu tím #ED00EB , body text exo regular 14px màu trắng | chiếu cao nút: 40px, dài tùy ý
+
+768: header exo bold 30px Màu tím #ED00EB , body text exo regular 12px màu trắng | chiếu cao nút: 40px, dài tùy ý
+
+480: header exo bold 20px Màu tím #ED00EB , body text exo regular 10px màu trắng | chiếu cao nút: 25px, dài tùy ý
+
+nút gradient: từ trái sang phải: trái: #ED00EB, phải:#4D004B
+
+css cho nut gradient : background: linear-gradient(0deg, rgba(237,0,235,1) 0%, rgba(77,0,75,1) 100%); */
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: 0px;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+#bodyContainer {
+    height: 200vh;
+    width: 100vw;
+    left: 0;
+}
+.screen {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: rgb(0, 0, 0);
+}
+#bgVideo {
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+}
+#bgVideo::-webkit-media-controls {
+    display:none !important;
+}
+#scrollLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+}
+#layer4DX {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7)
+}
+#Logo4DX {
+    position: absolute;
+    height: 138px;
+    width: 349px;
+    background-image: url(../4DX/images/Logo4DX_1200.png);
+    background-size: cover;
+    top: 20vh;
+    left: 10vw;
+}
+#Header4DX {
+    position: absolute;
+    height: 50px;
+    line-height: 50px;
+    font-size: 35px;
+    font-family: 'EXO_BOLD';
+    width: 500px;
+    text-align: left;
+    color: #ED00EB;
+    top: calc(20vh + 148px);
+    left: 10vw;
+}
+#Text4DX {
+    position: absolute;
+    height: 76px;
+    width: 410px;
+    font-size: 14px;
+    font-family: 'EXO_Regular';
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    top: calc(20vh + 208px);
+    left: 10vw;
+}
+#Button4DX {
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 250px;
+    font-size: 14px;
+    font-family: 'EXO_Regular';
+    background: linear-gradient(90deg, rgba(237,0,235,1) 0%, rgba(77,0,75,1) 100%);
+    background-size: cover;
+    color: white;
+    cursor: pointer;
+    top: calc(20vh + 314px);
+    left: 10vw;
+}
+#playVideoButton {
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    background-image: url(../4DX/images/PlayButton_1200.png);
+    background-size: cover;
+    top: calc(50vh - 60px);
+    right: 20vw;
+    cursor: pointer;
+}
+#scrollIcon {
+    position: fixed;
+    height: 47px;
+    width: 23px;
+    background-image: url(../4DX/images/ScrollIcon_1200.png);
+    background-size: cover;
+    bottom: 5vh;
+    left: calc(50vw - 11px);
+    z-index: 3;
+}
+
+#effectFrontLayer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index: 2;
+}
+#effectBackLayer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index: 0;
+}
+#textAndButton {
+    position: absolute;
+    max-height: 30vh;
+    width: 70vw;
+    height: 200px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    top: 5vh;
+    left: 15vw;
+    z-index: 3;
+}
+#line {
+    height: 3px;
+    min-width: 15%;
+    width: 100px;
+    background-image: linear-gradient(to left, rgba(237,0,235,1), rgba(77,0,75,1), rgba(77,0,75,1), rgba(237,0,235,1));
+}
+#textContainer {
+    height: 150px;
+    max-width: 100%;
+    width: 600px;
+    font-size: 14px;
+    font-family: 'EXO_Regular';
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+#buttonContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 100%;
+    width: 600px;
+    height: 80px;
+}
+#buttonContainer .buttonWrapper {
+    height: 30px;
+    width: 30px;
+    position: relative;
+}
+#buttonContainer .buttonWrapper .button {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+#buttonContainer .buttonWrapper span {
+    position: absolute;
+    display: none;
+    z-index: 10;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    width: 100px;
+    left: -35px;
+    top: 35px;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    #buttonContainer .buttonWrapper:hover span {
+        display: block;
+    }
+    #buttonContainer .buttonWrapper:hover .button {
+        transform: scale(1.5);
+    }
+    
+}
+
+.spanActive span {
+    display: block !important;
+    top: -35px !important;
+}
+.buttonActive {
+    transform: scale(1.5) rotateX(10deg);
+}
+
+.appearingAnimation {
+    animation: appearing 1.5s ease-in-out;
+    opacity: 1;
+}
+@keyframes appearing {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.fadingAnimation {
+    animation: fading 1.5s ease-in-out;
+    opacity: 0;
+}
+@keyframes fading {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+
+#seat {
+    display: none;
+    position: absolute;
+    height: 337px;
+    width: 90vw;
+    background-image: url(../4DX/images/Seat_1200.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 5vw;
+    bottom: 5vh;
+    z-index: 1;
+    filter: brightness(1.2);
+}
+.seatModel {
+    display: block;
+    position: absolute;
+    height: 337px;
+    width: 90vw;
+    background-image: url(../4DX/images/Seat_1200.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 5vw;
+    bottom: 5vh;
+    z-index: 0;
+}
+@keyframes shake {
+    0% {
+        transform: rotate(0deg) rotateY(0deg);
+    } 20% {
+        transform: rotate(3.5deg) rotateY(15deg);
+    } 45% {
+        transform: rotate(1.5deg) rotateY(5deg);
+    } 50% {
+        transform: rotate(0deg) rotateY(0deg);
+    } 70% {
+        transform: rotate(-3.5deg) rotateY(-15deg);
+    } 95% {
+        transform: rotate(-1.5deg) rotateY(-5deg);
+    } 100% {
+        transform: rotate(0deg) rotateY(0deg);
+    }
+}
+@keyframes move {
+    0%{
+        left: calc(5vw - 10px);
+    } 25% {
+        left: calc(5vw + 10px);
+    } 50%{
+        left: calc(5vw - 10px);
+    } 75% {
+        left: calc(5vw + 10px);
+    } 100% {
+        left: calc(5vw - 10px);
+    }
+}
+@keyframes tickle {
+    0%{
+        transform: rotateX(0deg) skewX(0deg) skewY(0deg) scaleY(1);
+    } 25% {
+        transform: rotateX(20deg) skewX(1deg) skewY(-1deg) scaleY(1.1);
+    } 50%{
+        transform: rotateX(0deg) skewX(0deg) skewY(0deg) scaleY(1);
+    } 75% {
+        transform: rotateX(-20deg) skewX(-1deg) skewY(1deg) scaleY(1.1);
+    } 100% {
+        transform: rotateX(0deg) skewX(0deg) skewY(0deg) scaleY(1);
+    }
+}
+
+.rainingDrops {
+    position: absolute;
+    border-radius: 30%;
+    background-color: white;
+}
+.humidDrops {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+}
+.bubles {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#lightRay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../4DX/images/lightRay.png);
+    background-size: cover;
+    animation: bgLightAppear 3s ease-in-out infinite 2s;
+    opacity: 0;
+    transform: rotate(180deg);
+}
+@keyframes bgLightAppear {
+    0% {
+        opacity: .1;
+    } 30% {
+        opacity: .5;
+    } 50% {
+        opacity: .3;
+    } 70% {
+        opacity: .5;
+    } 85% {
+        opacity: .3;
+    } 100% {
+        opacity: .1;
+    } 
+}
+.bgLights {
+    position: absolute;
+    height: 100vh;
+    width: 70vw;
+    background-image: url(../4DX/images/bgLight.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right top;
+    opacity: 0;
+}
+.stadiumLights {
+    position: absolute;
+    height: 100vh;
+    width: 30vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    animation: stadiumLightAppear 1s ease-in-out;
+}
+@keyframes stadiumLightAppear {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: .3;
+    }
+}
+#airCondition {
+    position: absolute;
+    max-height: 50vh;
+    height: 80px;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-image: url(../4DX/images/airCondition.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    animation: airCoditionAppear 2s ease-in-out;
+    opacity: .8;
+}
+@keyframes airCoditionAppear {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: .8;
+    }
+}
+.airFlow {
+    position: absolute;
+    height: 400px;
+    width: 100vw;
+    opacity: 0;
+    background-image: url(../4DX/images/airFlow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    animation: airFlow 4s infinite ease-in-out 2s;
+}
+@keyframes airFlow {
+    0% {
+        top: 0;
+        opacity: .1;
+        transform: scale(1);
+    } 40% {
+        top: 10vh;
+        opacity: .5;
+        transform: scale(1.3);
+    } 55% {
+        top: 15vh;
+        opacity: .1;
+        transform: scale(1.4);
+    } 70% {
+        top: 20vh;
+        opacity: .2;
+        transform: scale(1.5);
+    } 100% {
+        top: 30vh;
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+.freshAir {
+    position: absolute;
+    bottom: 0;
+    height: 75px;
+    width: 35px;
+    opacity: 1;
+    background-image: url(../4DX/images/freshAir.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.fans {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-image: url(../4DX/images/fan.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    top: 20px;
+    animation: rotateFans .1s infinite ease-in-out 3s;
+}
+@keyframes rotateFans {
+    0% {
+        transform: rotate(0deg);
+    } 10% {
+        transform: rotate(360deg);
+    } 20% {
+        transform: rotate(720deg);
+    } 30% {
+        transform: rotate(1080deg);
+    } 40% {
+        transform: rotate(1440deg);
+    } 50% {
+        transform: rotate(1800deg);
+    } 60% {
+        transform: rotate(2160deg);
+    } 70% {
+        transform: rotate(2520deg);
+    } 80% {
+        transform: rotate(2880deg);
+    } 90% {
+        transform: rotate(3240deg);
+    } 100% {
+        transform: rotate(3600deg);
+    }
+}
+.airWaves {
+    position: absolute;
+    height: 100vh;
+    width: 100px;
+    background-image: url(../4DX/images/airWave.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    opacity: 0;
+    top: 20px;
+    animation: rotateAirWaves .1s infinite ease-in-out 3s;
+}
+@keyframes rotateAirWaves {
+    0% {
+        transform: rotateY(0deg);
+    } 10% {
+        transform: rotateY(-720deg);
+    } 20% {
+        transform: rotateY(720deg);
+    } 30% {
+        transform: rotateY(-720deg);
+    } 40% {
+        transform: rotateY(720deg);
+    } 50% {
+        transform: rotateY(-720deg);
+    } 60% {
+        transform: rotateY(720deg);
+    } 70% {
+        transform: rotateY(-720deg);
+    } 80% {
+        transform: rotateY(720deg);
+    } 90% {
+        transform: rotateY(-720deg);
+    } 100% {
+        transform: rotateY(720deg);
+    }
+}
+#dandelion {
+    position: absolute;
+    bottom: 0;
+    height: 300px;
+    width: 200px;
+    background-image: url(../4DX/images/dandelion.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: .7;
+}
+@keyframes dandelionAppear {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: .7;
+    }
+}
+.rotateDandelion {
+    animation: rotateDandelion 2s ease-in-out !important;
+}
+@keyframes rotateDandelion {
+    0% {
+        transform: rotateY(0deg);
+    } 10% {
+        transform: rotateY(-360deg);
+    } 20% {
+        transform: rotateY(350deg);
+    } 30% {
+        transform: rotateY(-10deg);
+    } 40% {
+        transform: rotateY(340deg);
+    } 50% {
+        transform: rotateY(0deg);
+    } 100% {
+        transform: rotateY(0deg);
+    }
+}
+.dandelionLight {
+    position: absolute;
+    background-color: white;
+}
+@keyframes dandelionLightDrop {
+    0% {
+        opacity: 0;
+    } 52% {
+        transform: rotate(45deg);
+        height: 1px;
+        width: 1px;
+    } 55% {
+        transform: rotate(0deg);
+    } 58% {
+        opacity: .9;
+        transform: rotate(45deg);
+        height: 1px;
+        width: 2px;
+    } 61% {
+        transform: rotate(0deg);
+    } 64% {
+        transform: rotate(45deg);
+        height: 3px;
+        width: 2px;
+        border-radius: 5px;
+    } 67% {
+        transform: rotate(0deg);
+    } 70% {
+        transform: rotate(45deg);
+        height: 2px;
+        width: 1px;
+    } 73% {
+        transform: rotate(0deg);
+    } 76% {
+        transform: rotate(45deg);
+        height: 2px;
+        width: 3px;
+        border-radius: 5px;
+    } 79% {
+        transform: rotate(0deg);
+    } 82% {
+        transform: rotate(45deg);
+        height: 1px;
+        width: 2px;
+    } 85% {
+        transform: rotate(0deg);
+    } 88% {
+        transform: rotate(45deg);
+        height: 3px;
+        width: 2px;
+        border-radius: 5px;
+    } 91% {
+        transform: rotate(0deg);
+    } 94% {
+        opacity: .9;
+        transform: rotate(45deg);
+        height: 2px;
+        width: 1px;
+    } 97% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(45deg);
+        height: 2px;
+        width: 3px;
+        border-radius: 5px;
+    }
+}
+@keyframes dandelionLightStay {
+    0% {
+        opacity: 0;
+    } 52% {
+        transform: rotate(45deg);
+        height: 1px;
+        width: 1px;
+    } 55% {
+        transform: rotate(0deg);
+    } 58% {
+        opacity: .9;
+        transform: rotate(45deg);
+        height: 1px;
+        width: 2px;
+    } 61% {
+        transform: rotate(0deg);
+    } 64% {
+        transform: rotate(45deg);
+        height: 3px;
+        width: 5px;
+        border-radius: 5px;
+    } 67% {
+        transform: rotate(0deg);
+    } 70% {
+        transform: rotate(45deg);
+        height: 2px;
+        width: 1px;
+    } 73% {
+        transform: rotate(0deg);
+    } 76% {
+        transform: rotate(45deg);
+        height: 5px;
+        width: 3px;
+        border-radius: 5px;
+    } 79% {
+        transform: rotate(0deg);
+    } 82% {
+        transform: rotate(45deg);
+        height: 1px;
+        width: 2px;
+    } 85% {
+        transform: rotate(0deg);
+    } 88% {
+        transform: rotate(45deg);
+        height: 3px;
+        width: 5px;
+        border-radius: 5px;
+    } 91% {
+        transform: rotate(0deg);
+    } 94% {
+        opacity: .9;
+        transform: rotate(45deg);
+        height: 2px;
+        width: 1px;
+    } 97% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(45deg);
+        height: 5px;
+        width: 3px;
+        border-radius: 5px;
+    }
+}
+.dandelionChild {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.smells {
+    height: 100vw;
+    width: 100vw;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+#smell1 {
+    background-image: url(../4DX/images/smell1.png);
+    animation: fadingSmell1 18s infinite ease-in-out;
+}
+#smell2 {
+    background-image: url(../4DX/images/smell2.png);
+    animation: fadingSmell2 18s infinite ease-in-out 3s;
+}
+#smell3 {
+    background-image: url(../4DX/images/smell3.png);
+    animation: fadingSmell3 18s infinite ease-in-out;
+}
+#smell4 {
+    background-image: url(../4DX/images/smell4.png);
+    animation: fadingSmell1 18s infinite ease-in-out 9s;
+}
+@keyframes fadingSmell1 {
+    0% {
+        opacity: 0;
+    } 11.1% {
+        opacity: 1;
+    } 16.7% {
+        opacity: 1;
+    } 27.8% {
+        opacity: 0;
+    } 100% {
+        opacity: 0;
+    }
+}
+@keyframes fadingSmell2 {
+    0% {
+        opacity: 0;
+    } 16.6% {
+        opacity: 1;
+    } 22.2% {
+        opacity: 1;
+    } 33.3% {
+        opacity: 0;
+    } 66.7% {
+        opacity: 0;
+    } 77.8% {
+        opacity: 1;
+    } 88.3% {
+        opacity: 1;
+    } 94.4% {
+        opacity: 0;
+    } 100% {
+        opacity: 0;
+    } 
+}
+@keyframes fadingSmell3 {
+    0% {
+        opacity: 0;
+    } 33.3% {
+        opacity: 0;
+    } 44.4% {
+        opacity: 1;
+    } 50% {
+        opacity: 1;
+    } 61.1% {
+        opacity: 0;
+    } 66.7% {
+        opacity: 0;
+    } 77.8% {
+        opacity: 1;
+    } 83.3% {
+        opacity: 1;
+    } 94.4% {
+        opacity: 0;
+    } 100% {
+        opacity: 0;
+    }
+}
+#cloudBack {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../4DX/images/suongMuBack.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    animation: cloudAppear 3s ease-in-out;
+    opacity: .6;
+}
+#cloudFront {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../4DX/images/suongMuFront.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    opacity: 0;
+    z-index: 2;
+    animation: cloudLightening  6s infinite ease-in-out 3s;
+}
+.cloudFronts {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../4DX/images/suongMuFronts.png);
+    opacity: .6;
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+
+}
+@keyframes cloudAppear {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: .6;
+    }
+}
+@keyframes cloudLightening {
+    0% {
+        opacity: .1;
+    } 50% {
+        opacity: .4;
+    } 100% {
+        opacity: .1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    #Logo4DX {
+        height: 104px;
+        width: 262px;
+        top: 10vh;
+        left: calc(50vw - 131px);
+    }
+    #Header4DX {
+        height: 30px;
+        line-height: 30px;
+        font-size: 30px;
+        top: calc(10vh + 114px);
+        text-align: center;
+        left: calc(50vw - 250px);
+    }
+    #Text4DX {
+        height: 70px;
+        width: 410px;
+        font-size: 12px;
+        top: calc(10vh + 154px);
+        left: calc(50vw - 205px);
+    }
+    #Button4DX {
+        height: 40px;
+        line-height: 40px;
+        width: 250px;
+        font-size: 12px;
+        top: calc(10vh + 224px);
+        left: calc(50vw - 125px);
+    }
+    #playVideoButton {
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        background-image: url(../4DX/images/PlayButton_1200.png);
+        background-size: cover;
+        top: calc(10vh + 325px);
+        right: calc(50vw - 40px);
+        cursor: pointer;
+    }
+}
+@media only screen and (max-width: 480px) {
+    * {
+        overflow-x: hidden;
+    }
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+    #bodyContainer {
+        width: 100vw;
+        height: 100vh;
+    }
+    #bgVideo {
+        position: absolute;
+        top: 50vh;
+        width: 100vw;
+        height: 50vh;
+        z-index: 2;
+    }
+    #layer4DX {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 3;
+    }
+    #Logo4DX {
+        height: 80px;
+        width: 202px;
+        top: 30px;
+        left: calc(50vw - 101px);
+    }
+    #Header4DX {
+        height: 20px;
+        line-height: 20px;
+        font-size: 20px;
+        top: 120px;
+        left: calc(50vw - 239px);
+    }
+    #Text4DX {
+        height: 50px;
+        width: 90vw;
+        font-size: 10px;
+        padding: 0 5vw;
+        top: 140px;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #Button4DX {
+        height: 25px;
+        line-height: 25px;
+        width: 200px;
+        font-size: 10px;
+        top: 210px;
+        left: calc(50vw - 100px);
+    }
+    #playVideoButton {
+        height: 60px;
+        width: 60px;
+        top: calc(75vh - 30px);
+        right: calc(50vw - 30px);
+    }
+    #scrollIcon {
+        height: 31px;
+        width: 15px;
+        bottom: 2vh;
+        left: calc(50vw - 11px);
+        z-index: 3;
+    }
+    #textAndButton {
+        position: absolute;
+        max-height: 50vh;
+        width: 90vw;
+        height: 400px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        top: 10px;
+        left: 5vw;
+        z-index: 3;
+    }
+    /* #line {
+    } */
+    #textContainer {
+        height: 70px !important;
+        max-height: 80%;
+        max-width: 100%;
+        width: 600px;
+        font-size: 10px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    #buttonContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        max-width: 100%;
+        width: 600px;
+        height: 80px;
+    }
+    #buttonContainer .buttonWrapper {
+        height: 20px;
+        width: 20px;
+        margin: 15px 10px;
+        position: relative;
+    }
+    #buttonContainer .buttonWrapper .button {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 20px;
+        width: 20px;
+    }
+    #buttonContainer .buttonWrapper span {
+        position: absolute;
+        display: none;
+        z-index: 10;
+        font-size: 12px;
+        text-align: center;
+        line-height: 30px;
+        height: 30px;
+        width: 100px;
+        left: -35px;
+        top: 35px;
+    }
+    #seat {
+        display: none;
+        position: absolute;
+        height: 337px;
+        width: 90vw;
+        background-image: url(../4DX/images/Seat_1200.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 5vw;
+        bottom: 0;
+        z-index: 1;
+        filter: brightness(1.2);
+    }
+    .seatModel {
+        display: block;
+        position: absolute;
+        height: 337px;
+        width: 90vw;
+        background-image: url(../4DX/images/Seat_1200.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 5vw;
+        bottom: 0;
+        z-index: 0;
+    }
+    
+    .rainingDrops {
+        position: absolute;
+        border-radius: 30%;
+        background-color: white;
+    }
+    .humidDrops {
+        position: absolute;
+        border-radius: 50%;
+        background-color: white;
+    }
+    .bubles {
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    #lightRay {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        background-image: url(../4DX/images/lightRay.png);
+        background-size: cover;
+        animation: bgLightAppear 3s ease-in-out infinite 2s;
+        opacity: 0;
+        transform: rotate(180deg);
+    }
+
+    .bgLights {
+        position: absolute;
+        height: 100vh;
+        width: 70vw;
+        background-image: url(../4DX/images/bgLight.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right top;
+        opacity: 0;
+    }
+    .stadiumLights {
+        position: absolute;
+        height: 100vh;
+        width: 30vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        animation: stadiumLightAppear 1s ease-in-out;
+    }
+    #airCondition {
+        position: absolute;
+        max-height: 50vh;
+        height: 80px;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        background-image: url(../4DX/images/airCondition.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        animation: airCoditionAppear 2s ease-in-out;
+        opacity: .8;
+    }
+    .airFlow {
+        position: absolute;
+        height: 400px;
+        width: 100vw;
+        opacity: 0;
+        background-image: url(../4DX/images/airFlow.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        animation: airFlowCondition 4s infinite ease-in-out 2s;
+    }
+    .freshAir {
+        position: absolute;
+        bottom: 0;
+        height: 75px;
+        width: 35px;
+        opacity: 1;
+        background-image: url(../4DX/images/freshAir.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .fans {
+        height: 50px;
+        width: 50px;
+    }
+    .airWaves {
+        height: 100vh;
+        width: 50px;
+    }
+    
+    
+    
+    
+    
+    #cloudBack {
+        position: absolute;
+        width: 300vw;
+        height: 100vh;
+        background-image: url(../4DX/images/suongMuBack.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        animation: cloudAppear 3s ease-in-out;
+        opacity: 0.5;
+    }
+    #cloudFront {
+        position: absolute;
+        width: 300vw;
+        height: 100vh;
+        background-image: url(../4DX/images/suongMuFront.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        opacity: 0;
+        z-index: 2;
+        animation: cloudLightening  12s infinite ease-in-out 3s;
+    }
+    .cloudFronts {
+        position: absolute;
+        width: 200vw;
+        height: 100vh;
+        background-image: url(../4DX/images/suongMuFronts.png);
+        opacity: .6;
+        z-index: 1;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+    }
+    @keyframes cloudAppear {
+        0% {
+            opacity: 0;
+        } 100% {
+            opacity: .5;
+        }
+    }
+    @keyframes cloudLightening {
+        0% {
+            opacity: .1;
+        } 50% {
+            opacity: .4;
+        } 100% {
+            opacity: .1;
+        }
+    }
+}
