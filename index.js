@@ -29,45 +29,53 @@ const view = {}
 view.windowScroll = () => {
     model.scrollY = window.scrollY
     //// fix scroll to exactly screen' positions by behavior smooth
-    if (innerWidth > 481) {
-        if (model.windowScrollDeltaY > 0) {
-            if (model.scrollY < innerHeight) {
-                seat.style.animation = ``
-                window.scrollTo({
-                    top: innerHeight,
-                    left: 0,
-                    behavior: 'smooth'
-                })
-            } else if (model.scrollY > innerHeight) {
-                window.scrollTo({
-                    top: innerHeight + 348,
-                    left: 0,
-                    behavior: "smooth"
-                })
-            }
-        } else if (model.windowScrollDeltaY < 0) {
-            if (model.scrollY < innerHeight) {
-                view.clearCurrentEffect()
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: 'smooth'
-                })
-            } else if (model.scrollY > innerHeight) {
-                window.scrollTo({
-                    top: innerHeight,
-                    left: 0,
-                    behavior: "smooth"
-                })
-            }
-        } else {
+    if (model.windowScrollDeltaY > 0) {
+        if (model.scrollY < innerHeight) {
+            seat.style.animation = ``
+            window.scrollTo({
+                top: innerHeight,
+                left: 0,
+                behavior: 'smooth'
+            })
+        } else if (model.scrollY > innerHeight) {
+            window.scrollTo({
+                top: innerHeight + 348,
+                left: 0,
+                behavior: "smooth"
+            })
+        }
+    } else if (model.windowScrollDeltaY < 0) {
+        if (model.scrollY < innerHeight) {
+            view.clearCurrentEffect()
             window.scrollTo({
                 top: 0,
                 left: 0,
-                behavior: 'auto',
+                behavior: 'smooth'
             })
-            model.scrollY = window.scrollY
+        } else if (model.scrollY > innerHeight) {
+            window.scrollTo({
+                top: innerHeight,
+                left: 0,
+                behavior: "smooth"
+            })
         }
+    } else {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'auto',
+        })
+        model.scrollY = window.scrollY
+    }
+     //// responsive showing seat
+    const scrollYForSeatFloor = innerHeight * 0.95 - 337
+    if (model.scrollY <= scrollYForSeatFloor) {
+        seat.style.display = 'none'
+    } else if (model.scrollY > scrollYForSeatFloor && model.scrollY <= innerHeight) {
+        scrollYForSeat = model.scrollY - scrollYForSeatFloor
+        seat.style.display = 'block'
+        seat.style.position = 'fixed'
+        seat.style.opacity = scrollYForSeat / (innerHeight - scrollYForSeatFloor)
     }
     //// responsive showing cover-video-background layer
     if (model.scrollY === 0) scrollLayer.style.zIndex = -1
@@ -82,21 +90,6 @@ view.windowScroll = () => {
         scrollYForTextAndButton = Math.abs(model.scrollY - innerHeight)
         textAndButton.style.opacity = Number(((200 - scrollYForTextAndButton) / 200).toFixed(1))
     }
-    //// responsive showing seat
-    const scrollYForSeatFloor = innerHeight * 0.95 - 337
-    if (model.scrollY <= scrollYForSeatFloor) {
-        seat.style.display = 'none'
-    } else if (model.scrollY > scrollYForSeatFloor && model.scrollY <= innerHeight) {
-        scrollYForSeat = model.scrollY - scrollYForSeatFloor
-        seat.style.display = 'block'
-        seat.style.position = 'fixed'
-        seat.style.opacity = scrollYForSeat / (innerHeight - scrollYForSeatFloor)
-    } else {
-        seat.style.opacity = 1
-        seat.style.display = 'block'
-        seat.style.position = 'absolute'
-    }
-
     //// responsive showing scroll icon
     if (model.scrollY <= innerHeight / 5) {
         scrollIcon.className = `appearingAnimation`
