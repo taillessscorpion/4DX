@@ -90,6 +90,7 @@ view.windowScroll = () => {
         scrollYForTextAndButton = Math.abs(model.scrollY - innerHeight)
         textAndButton.style.opacity = Number(((200 - scrollYForTextAndButton) / 200).toFixed(1))
     }
+
     //// responsive showing scroll icon
     if (model.scrollY <= innerHeight / 5) {
         scrollIcon.className = `appearingAnimation`
@@ -535,16 +536,29 @@ view.setSpitEffect = () => {
             buttonIcon[3].onclick = () => { view.clearCurrentEffect() }
             seat.style.animation = ``
             model.currentEffect = 3
-            model.layerDrawing = setInterval(() => {
-                manyFrontLeftDrops = Math.floor(Math.random() * 1) + 1
-                for (let i = 0; i < manyFrontLeftDrops; i++) {
-                    controller.createHumidDrop('left', effectFrontLayer)
-                }
-                manyFrontRightDrops = Math.floor(Math.random() * 1) + 1
-                for (let i = 0; i < manyFrontRightDrops; i++) {
-                    controller.createHumidDrop('right', effectFrontLayer)
-                }
-            }, 20);
+            if(innerWidth < 480) {
+                model.layerDrawing = setInterval(() => {
+                    manyFrontLeftDrops = Math.floor(Math.random() * 1) + 1
+                    for (let i = 0; i < manyFrontLeftDrops; i++) {
+                        controller.createHumidDrop('left', effectFrontLayer)
+                    }
+                    manyFrontRightDrops = Math.floor(Math.random() * 1) + 1
+                    for (let i = 0; i < manyFrontRightDrops; i++) {
+                        controller.createHumidDrop('right', effectFrontLayer)
+                    }
+                }, 100);
+            } else {
+                model.layerDrawing = setInterval(() => {
+                    manyFrontLeftDrops = Math.floor(Math.random() * 1) + 1
+                    for (let i = 0; i < manyFrontLeftDrops; i++) {
+                        controller.createHumidDrop('left', effectFrontLayer)
+                    }
+                    manyFrontRightDrops = Math.floor(Math.random() * 1) + 1
+                    for (let i = 0; i < manyFrontRightDrops; i++) {
+                        controller.createHumidDrop('right', effectFrontLayer)
+                    }
+                }, 20);
+            }
         }
     }, 10)
 
@@ -561,16 +575,29 @@ view.setRainEffect = () => {
             buttonIcon[4].onclick = () => { view.clearCurrentEffect() }
             seat.style.animation = ``
             model.currentEffect = 4
-            model.layerDrawing = setInterval(() => {
-                const manyFrontRainDrop = Math.floor(Math.random() * 3 + 2)
-                for (let i = 0; i < manyFrontRainDrop; ++i) {
-                    controller.dropFrontRainDrop()
-                }
-                const manyBackRainDrop = Math.floor(Math.random() * 10 + 5)
-                for (let i = 0; i < manyBackRainDrop; ++i) {
-                    controller.dropBackRainDrop()
-                }
-            }, 100)
+            if(innerWidth < 480) {
+                model.layerDrawing = setInterval(() => {
+                    const manyFrontRainDrop = Math.floor(Math.random() * 2 + 1)
+                    for (let i = 0; i < manyFrontRainDrop; ++i) {
+                        controller.dropFrontRainDrop()
+                    }
+                    const manyBackRainDrop = Math.floor(Math.random() * 4 + 3)
+                    for (let i = 0; i < manyBackRainDrop; ++i) {
+                        controller.dropBackRainDrop()
+                    }
+                }, 100)
+            } else {
+                model.layerDrawing = setInterval(() => {
+                    const manyFrontRainDrop = Math.floor(Math.random() * 3 + 2)
+                    for (let i = 0; i < manyFrontRainDrop; ++i) {
+                        controller.dropFrontRainDrop()
+                    }
+                    const manyBackRainDrop = Math.floor(Math.random() * 10 + 5)
+                    for (let i = 0; i < manyBackRainDrop; ++i) {
+                        controller.dropBackRainDrop()
+                    }
+                }, 100)
+            }
             controller.runWindEffection(2000)
         }
     }, 10)
